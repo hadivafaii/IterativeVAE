@@ -1,0 +1,33 @@
+{
+    "kl_beta_min": 0.0001,
+    "kl_balancer": null,
+    "kl_time_adjuster": null,
+    "kl_anneal_cycles": 0,
+    "kl_anneal_portion": 0.1,
+    "kl_const_portion": 0.001,
+    "temp_anneal_portion": 0.5,
+    "temp_anneal_type": "lin",
+    "temp_start": 1.0,
+    "temp_stop": 0.01,
+    "lr": 0.005,
+    "epochs": 300,
+    "batch_size": 200,
+    "warm_restart": 0,
+    "warmup_portion": 0.005,
+    "optimizer": "adamax_fast",
+    "optimizer_kws": {
+        "weight_decay": 0.0003,
+        "betas": [
+            0.9,
+            0.999
+        ],
+        "eps": 1e-08
+    },
+    "scheduler_type": "cosine",
+    "dataset_kws": null,
+    "ema_rate": null,
+    "grad_clip": 300,
+    "chkpt_freq": 10,
+    "eval_freq": 20,
+    "log_freq": 10
+}

@@ -1,0 +1,28 @@
+{
+    "latent_act": null,
+    "dataset": "vH16-wht",
+    "t_train": 16,
+    "n_iters_outer": 1,
+    "n_iters_inner": 1,
+    "beta_outer": 8.0,
+    "beta_inner": 1.0,
+    "n_latents": [
+        512
+    ],
+    "inf_type": "grad",
+    "dec_type": "lin",
+    "fit_prior": true,
+    "stochastic": true,
+    "init_dist": "normal",
+    "init_scale": 0.0001,
+    "clamp_du": [
+        7.0,
+        3.0
+    ],
+    "clamp_u": [
+        7.0,
+        2.0
+    ],
+    "seed": 0,
+    "track_stats": false
+}

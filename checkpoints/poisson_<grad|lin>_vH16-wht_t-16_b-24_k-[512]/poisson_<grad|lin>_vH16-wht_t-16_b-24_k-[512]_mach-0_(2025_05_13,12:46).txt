@@ -1,0 +1,135 @@
+[PROGRESS] fitting VAE on mach-cuda:1 done! run time  ——>  3h, 25m  <——
+[PROGRESS] start: 2025_05_13,12:46  ———  stop: 2025_05_13,16:11
+
+____________________________________________________________________________________________________
+[INFO] Checkpoint Directory:
+/home/hadi/Projects/PoissonVAE/models/poisson_vH16-wht_t-16_b-24_k-[512]_u-10,du-10/b200-ep300-lr(0.005)_temp(0.01:0.5)_gr(300)_(2025_05_13,12:46)
+
+____________________________________________________________________________________________________
+[INFO] model name: poisson_vH16-wht_t-16_b-24_k-[512]_u-10,du-10
+[INFO] model cfg:
+{
+    "prior_log_dist": "uniform",
+    "clamp_prior": -4,
+    "t_train": 16,
+    "n_iters_outer": 1,
+    "n_iters_inner": 1,
+    "dataset": "vH16-wht",
+    "dataset_name": "vH16-wht",
+    "feeder": "stationary",
+    "feeder_cfg": {},
+    "input_sz": [
+        1,
+        16,
+        16
+    ],
+    "shape": [
+        -1,
+        1,
+        16,
+        16
+    ],
+    "beta_inner": 1.0,
+    "beta_outer": 24.0,
+    "n_latents": [
+        512
+    ],
+    "inf_type": "grad",
+    "dec_type": "lin",
+    "clamp_u": 10.0,
+    "clamp_du": 10.0,
+    "init_dist": "normal",
+    "init_scale": 0.0001,
+    "stochastic": true,
+    "fit_prior": true,
+    "seed": 0,
+    "track_stats": false
+}
+
+____________________________________________________________________________________________________
+[INFO] trainer name: b200-ep300-lr(0.005)_temp(0.01:0.5)_gr(300)
+[INFO] trainer cfg:
+{
+    "lr": 0.005,
+    "epochs": 300,
+    "batch_size": 200,
+    "dataset_kws": null,
+    "warm_restart": 0,
+    "warmup_portion": 0.005,
+    "optimizer": "adamax_fast",
+    "optimizer_kws": {
+        "weight_decay": 0.0003,
+        "betas": [
+            0.9,
+            0.999
+        ],
+        "eps": 1e-08
+    },
+    "scheduler_type": "cosine",
+    "scheduler_kws": {
+        "T_max": 298.5,
+        "eta_min": 1e-05
+    },
+    "ema_rate": null,
+    "grad_clip": 300,
+    "chkpt_freq": 10,
+    "eval_freq": 20,
+    "log_freq": 10,
+    "kl_beta_min": 0.0001,
+    "kl_balancer": null,
+    "kl_time_adjuster": null,
+    "kl_anneal_cycles": 0,
+    "kl_anneal_portion": 0.1,
+    "kl_const_portion": 0.001,
+    "temp_anneal_portion": 0.5,
+    "temp_anneal_type": "lin",
+    "temp_start": 1.0,
+    "temp_stop": 0.01
+}
+
+____________________________________________________________________________________________________
+[INFO] args:
+{
+    "device": 1,
+    "dataset": "vH16-wht",
+    "model": "poisson",
+    "archi": "grad|lin",
+    "t_train": 16,
+    "n_iters_outer": 1,
+    "n_iters_inner": 1,
+    "beta_outer": 24.0,
+    "beta_inner": 1.0,
+    "n_latents": "__placeholder__",
+    "init_dist": "normal",
+    "init_scale": "__placeholder__",
+    "clamp_du": "__placeholder__",
+    "clamp_u": "__placeholder__",
+    "fit_prior": true,
+    "stochastic": true,
+    "seed": 0,
+    "clamp_prior": "__placeholder__",
+    "prior_log_dist": "uniform",
+    "latent_act": null,
+    "lr": "__placeholder__",
+    "epochs": "__placeholder__",
+    "batch_size": "__placeholder__",
+    "warm_restart": "__placeholder__",
+    "warmup_portion": 0.005,
+    "optimizer": "adamax_fast",
+    "temp_start": 1.0,
+    "temp_stop": "__placeholder__",
+    "temp_anneal_type": "lin",
+    "temp_anneal_portion": "__placeholder__",
+    "kl_anneal_portion": 0.1,
+    "kl_const_portion": 0.001,
+    "kl_anneal_cycles": 0,
+    "grad_clip": "__placeholder__",
+    "chkpt_freq": 10,
+    "eval_freq": 20,
+    "log_freq": 10,
+    "comment": null,
+    "dry_run": false,
+    "dont_save_info": false,
+    "cudnn_bench": false,
+    "verbose": true
+}
