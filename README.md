@@ -63,7 +63,7 @@ To reproduce Figure 3 from the paper, train models using the following configura
 
 - **`results.ipynb`**: Generates figures and analyses from the paper.
 - **`load_models.ipynb`**: Visualizes trained models and their features.
-- **`hubel-wiesel.ipynb`**: Reproduce the [classic Hubel & Wiesel bar of light experiment](https://www.youtube.com/watch?v=OGxVfKJqX5E) on a model "neuron".
+- **`hubel_wiesel.ipynb`**: Reproduce the [classic Hubel & Wiesel bar of light experiment](https://www.youtube.com/watch?v=OGxVfKJqX5E) on a model "neuron".
 
 ## 4. Model Checkpoints and Data
 
