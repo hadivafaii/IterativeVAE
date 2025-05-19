@@ -12,7 +12,9 @@ Building on this unification potential, we introduced **FOND** (*Free energy Onl
 
 We then applied the FOND framework to derive a family of iterative VAE models, including the spiking iterative Poisson VAE (**iP-VAE**). This repository provides the implementation code for these iterative VAEs.
 
-Before diving into the code, take a quick detour to watch an iP-VAE neuron in action, where we reproduce the [classic Hubel & Wiesel bar of light experiment](https://www.youtube.com/watch?v=OGxVfKJqX5E) → 🎥 [Watch the video with sound](./media/hubel_wiesel.mp4)
+Before diving into the code, take a quick detour to watch an iP-VAE neuron in action, where we reproduce the classic Hubel & Wiesel bar of light experiment: 🎥 [Watch the video with sound](https://www.youtube.com/watch?v=-4K49zanvAA)
+
+[![Watch the video](https://img.youtube.com/vi/-4K49zanvAA/hqdefault.jpg)](https://www.youtube.com/watch?v=-4K49zanvAA)
 
 ## 1. Code Structure
 
