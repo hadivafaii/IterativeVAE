@@ -115,14 +115,13 @@ For details, see the ```make_dataset()``` function in **`./base/dataset.py`**.
 If you use our code in your research, please cite our paper:
 
 ```bibtex
-@misc{vafaii2025brainlike,
-    title={Brain-like variational inference}, 
-    author={Hadi Vafaii and Dekel Galor and Jacob L. Yates},
-    year={2025},
-    eprint={2410.19315},
-    archivePrefix={arXiv},
-    primaryClass={cs.AI},
-    url={https://arxiv.org/abs/2410.19315}, 
+@inproceedings{
+  vafaii2025brainlike,
+  title={Brain-like Variational Inference},
+  author={Hadi Vafaii and Dekel Galor and Jacob L. Yates},
+  booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems},
+  year={2025},
+  url={https://openreview.net/forum?id=573IcLusXq}
 }
 ```
 
