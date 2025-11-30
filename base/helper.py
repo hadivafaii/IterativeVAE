@@ -385,7 +385,7 @@ class ParameterGrid:
 			Dictionary mapping parameter names to their values
 		"""
 		if idx < 0 or idx >= self.total_combinations:
-			max_idx = self.total_combinations - 1
+			max_idx = int(self.total_combinations) - 1
 			msg = f"Index must be between 0 and {max_idx}"
 			raise ValueError(msg)
 

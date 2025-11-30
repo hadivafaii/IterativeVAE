@@ -1,0 +1,40 @@
+{
+    "method": "mc",
+    "kl_beta": 1.0,
+    "kl_beta_min": 0.0001,
+    "kl_anneal_cycles": 0,
+    "kl_anneal_portion": 0.5,
+    "kl_const_portion": 0.0,
+    "lambda_anneal": false,
+    "lambda_init": 0.0,
+    "lambda_norm": 0.0,
+    "temp_anneal_portion": 0.0,
+    "temp_anneal_type": "lin",
+    "temp_start": 1.0,
+    "temp_stop": 1.0,
+    "lr": 0.005,
+    "epochs": 3000,
+    "batch_size": 1000,
+    "warm_restart": 0,
+    "warmup_epochs": 5,
+    "optimizer": "adamax_fast",
+    "optimizer_kws": {
+        "weight_decay": 0.0,
+        "betas": [
+            0.9,
+            0.999
+        ],
+        "eps": 1e-08
+    },
+    "scheduler_type": "cosine",
+    "scheduler_kws": {
+        "T_max": 2995.0,
+        "eta_min": 1e-05
+    },
+    "ema_rate": null,
+    "grad_clip": 500,
+    "use_amp": false,
+    "chkpt_freq": 50,
+    "eval_freq": 20,
+    "log_freq": 10
+}

@@ -823,6 +823,7 @@ class Trainer(_BaseTrainer):
 		r2 = np.zeros(t_total, dtype=np.float32)
 		mse = np.zeros(t_total, dtype=np.float32)
 		du_norm = np.zeros(t_total, dtype=np.float32)
+		portion_zeros = np.zeros(t_total, dtype=np.float32)
 		# state, samples
 		assert save_freq >= 1
 		save_freq = int(save_freq)
@@ -861,6 +862,7 @@ class Trainer(_BaseTrainer):
 
 			_u, _z, _norms = [], [], []
 			_mse_list, _r2_list = [], []
+			_zeros_list = []
 			# loop over time
 			for t in range(t_total):
 				# (1) set model time
@@ -869,6 +871,11 @@ class Trainer(_BaseTrainer):
 				output = model.xtract_ftr(
 					feeder[t], **kwargs)
 				# (3) save
+				# compute portion zeros for this batch
+				current_posterior_samples = model.layer.apply_act_fn()
+				_zeros_batch = (current_posterior_samples == 0)
+				_zeros_batch = _zeros_batch.to(dtype=torch.float)
+				_zeros_batch = torch.mean(_zeros_batch, dim=1)
 				# tonp + append
 				_norms_batch = torch.linalg.norm(
 					output['du'], dim=-1)
@@ -881,18 +888,21 @@ class Trainer(_BaseTrainer):
 				_mse_list.append(tonp(torch.sum(
 					output['mse'], dim=0)
 				))
+				_zeros_list.append(tonp(torch.sum(
+					_zeros_batch, dim=0)))
 				if t == 0 or (t + 1) % save_freq == 0:
 					_u.append(tonp(output['u']))
 					_z.append(tonp(output['samples']))
 					if save_freq > 1:
 						times[t // save_freq + 1] = t
 			# cat & append
-			_r2_list, _mse_list, _norms = stack_map(
-				x=[_r2_list, _mse_list, _norms], axis=0)
+			_r2_list, _mse_list, _zeros_list, _norms = stack_map(
+				x=[_r2_list, _mse_list, _zeros_list, _norms], axis=0)
 			# save: losses + du norm
 			r2 += _r2_list
 			mse += _mse_list
 			du_norm += _norms
+			portion_zeros += _zeros_list
 			# save: samples
 			_u, _z = stack_map(
 				x=[_u, _z], axis=1)
@@ -902,6 +912,7 @@ class Trainer(_BaseTrainer):
 		r2 /= n
 		mse /= n
 		du_norm /= n
+		portion_zeros /= n
 		# (6) results to return
 		results = {
 			'r2': r2,
@@ -909,6 +920,7 @@ class Trainer(_BaseTrainer):
 			'state': state,
 			'samples': samples,
 			'du_norm': du_norm,
+			'portion_zeros': portion_zeros,
 			'times': times + 1,
 		}
 		return results

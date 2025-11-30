@@ -39,8 +39,6 @@ class _StochasticLayer(nn.Module):
 	def infer(self, x):
 		if self._cfg.inf_type == 'grad':
 			return self.infer_grad(x)
-		elif self._cfg.inf_type == 'leapfrog':
-			return self.infer_leapfrog(x)
 		else:
 			msg = 'invalid inference type: '
 			msg = f"{msg}{self._cfg.inf_type}"

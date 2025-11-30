@@ -1,10 +1,10 @@
-## The Official PyTorch Implementation of "Brain-like Variational Inference" ([Paper Link](https://arxiv.org/pdf/2410.19315))
+## The Official PyTorch Implementation of "Brain-like Variatonal Inference" ([NeurIPS 2025 Paper](https://openreview.net/forum?id=573IcLusXq))
 
 Welcome to the *"Brain-like Variational Inference"* codebase!
 
 ## Introduction
 
-Variational free energy (F) is the same thing as negative ELBO from machine learning. Why do we care? Because F minimization unifies popular generative models like VAEs with major cornerstones of theoretical neuroscience like sparse coding and predictive coding:
+Variational free energy (F) is the same thing as negative ELBO from machine learning. Why do we care? Because F minimization unifies popular generative models like VAEs with major cornerstones of theoretical neuroscience like Sparse Coding and Predictive Coding:
 
 ![Model Tree](./media/model_tree.png)
 
@@ -21,12 +21,28 @@ Before diving into the code, take a quick detour to watch an iP-VAE neuron in ac
   <img src="https://img.youtube.com/vi/-4K49zanvAA/hqdefault.jpg" alt="Watch the video"/>
 </a>
 
+To learn more, check out:
+- Research paper: [https://openreview.net/forum?id=573IcLusXq](https://openreview.net/forum?id=573IcLusXq)
+- X summary thread: [https://x.com/hadivafaii/status/1924344415063294287](https://x.com/hadivafaii/status/1924344415063294287)
+- Talk: [https://www.youtube.com/watch?v=fTg-S81Ymto](https://www.youtube.com/watch?v=fTg-S81Ymto)
+
+
 ## 1. Code Structure
 
 - **`./main/`**: Full architecture and training code for the iterative VAE models, including iP-VAE and iG-VAE.
 - **`./base/`**: Core functionality including distributions, optimization, and dataset handling.
 - **`./analysis/`**: Data analysis and result generation code.
 - **`./scripts/`**: Model fitting scripts (examples below).
+
+### Stand-alone PyTorch Lightning Implementation
+
+We also provide a minimal PyTorch Lightning implementation of the iP-VAE, stripped down to its essential components. This serves as an excellent starting point for understanding the model. Check it out:
+
+<a target="_blank" href="https://colab.research.google.com/drive/1LeHEuUHSXkgdcuqnwE7eaSby2fk0FD_U?usp=sharing">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
+
 
 ## 2. Training a Model
 
