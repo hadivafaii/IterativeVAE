@@ -753,7 +753,7 @@ class Trainer(_BaseTrainer):
 			du_norm /= n
 		# (5) sparsity score
 		z_active = samples[..., tonp(active)]
-		percent_zeros = np.mean(z_active == 0, axis=(0, -1))
+		portion_zeros = np.mean(z_active == 0, axis=(0, -1))
 		if compute_sprs:
 			lifetime, population, _ = sparse_score(
 				z=self.to(z_active), cutoff=None)
@@ -762,7 +762,12 @@ class Trainer(_BaseTrainer):
 		else:
 			lifetime = np_nans(t_total)
 			population = np_nans(t_total)
-		# (6) results to return
+		# (6) overall sparse coding performance
+		sparse_coding_perf = np.sqrt(
+			(1 - r2) ** 2 +
+			(1 - portion_zeros) ** 2
+		) / np.sqrt(2)
+		# (7) results to return
 		results = {
 			'kl': kl,
 			'r2': r2,
@@ -771,7 +776,8 @@ class Trainer(_BaseTrainer):
 			'du_norm': du_norm,
 			'lifetime': lifetime,
 			'population': population,
-			'%-zeros': percent_zeros,
+			'%-zeros': portion_zeros,
+			'sparse_coding_perf': sparse_coding_perf,
 			'state_final': state_final,
 			'samples_final': samples[:, -1, :],
 		}
@@ -1016,7 +1022,7 @@ def save_fit_info(
 		start: str,
 		stop: str = None,
 		save_dir: str = 'logs',
-		root: str = 'Dropbox/git/_IterativeVAE', ):
+		root: str = 'Dropbox/git/IterativeVAE', ):
 	stop = stop or now(True)
 	# make info string
 	host = os.uname().nodename

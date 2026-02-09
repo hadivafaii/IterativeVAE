@@ -112,8 +112,8 @@ def plot_convergence(
 	kwargs = setup_kwargs(defaults, kwargs)
 
 	items = items or [
-		'mse', 'kl', 'r2', # 'nelbo',
-		'du_norm', 'lifetime', '%-zeros',
+		'mse', 'kl', 'du_norm', # 'nelbo',
+		'r2', '%-zeros', 'sparse_coding_perf',
 	]
 	ncols = int(np.ceil(len(items) / nrows))
 	figsize = (
@@ -139,9 +139,16 @@ def plot_convergence(
 			kws['yscale'] = 'linear'
 			kws['max_good'] = True
 			_subplot(**kws)
-		else:
-			kws['yscale'] = 'log'
+		elif key == 'sparse_coding_perf':
+			kws['yscale'] = 'linear'
+			kws['max_good'] = False
 			_subplot(**kws)
+		elif key in ['mse', 'kl', 'du_norm']:
+			kws['yscale'] = 'log'
+			kws['max_good'] = False
+			_subplot(**kws)
+		else:  # anything else?
+			raise ValueError(key)
 	trim_axs(axes, len(items))
 
 	if display:
